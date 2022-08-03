@@ -3,22 +3,26 @@ const React = require('react')
 const myStyle = {
     color: '#ffffff',
     backgroundColor: '#000000',
-};
+}
 
 class Index extends React.Component {
     render() {
-        const { pokemon } = this.props
         return (
             <div style={myStyle}>
                 <h1>See All The Pokemon!</h1>
+                <nav>
+                    <a href="/pokemon/new">Add a New Pokemon</a>
+                </nav>
                 <ul>
-                    {pokemon.map((poke, index) => {
-                        return (
-                            <li>
-                                <a href={`/pokemon/${index}`}>{poke.name.charAt(0).toUpperCase() + poke.name.slice(1)}</a>
-                            </li>
-                        )
-                    })}
+                    {
+                        this.props.pokemon.map((pokemon, index) => {
+                            return (
+                                <li>
+                                    <a href={`/pokemon/${pokemon.id}`}>{pokemon.name}</a>
+                                </li>
+                            )
+                        }
+                    )}
                 </ul>
             </div>
         )
