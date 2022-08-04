@@ -4,7 +4,8 @@ const app = express();
 const port = process.env.PORT || 8000;
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
-const Pokemon = require("./models/pokemon.js");
+const Pokemon = require("./models/pokemon");
+const pokemonData = require("./utilities/pokemonData");
 
 mongoose.connect(process.env.MONGO_URI);
 mongoose.connection.once("open", () => {
@@ -17,6 +18,14 @@ app.use(methodOverride("_method"));
 
 app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
+
+// Seed route
+app.get("/pokemon/seed", (req, res) => {
+  // Create a list of pokemon into our database
+  Pokemon.create(pokemonData, (error, pokemon) => {
+    res.redirect("/pokemon");
+  });
+});
 
 // Homepage
 app.get("/", (req, res) => {
