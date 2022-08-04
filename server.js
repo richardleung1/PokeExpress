@@ -21,9 +21,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/pokemon', (req, res) => {
-    Pokemon.find({}, (error, allPokemon) => {
+    Pokemon.find({}, (error, pokemon) => {
         res.render('Index', { 
-            pokemon: allPokemon 
+            pokemon
         })
     })
 })
@@ -34,6 +34,7 @@ app.get('/pokemon/new', (req, res) => {
 
 app.post('/pokemon/', (req, res)=>{
     req.body.name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1)
+    
     Pokemon.create(req.body, (error, pokemon)=>{
         res.redirect('/pokemon')
     })
