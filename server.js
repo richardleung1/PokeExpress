@@ -22,9 +22,8 @@ app.engine("jsx", require("express-react-views").createEngine());
 // Seed route
 app.get("/pokemon/seed", (req, res) => {
   // Create a list of pokemon into our database
-  Pokemon.create(pokemonData, (error, pokemon) => {
-    res.redirect("/pokemon");
-  });
+  Pokemon.create(pokemonData);
+  res.redirect("/pokemon");
 });
 
 // Homepage
@@ -48,8 +47,7 @@ app.get("/pokemon/new", (req, res) => {
 
 // Post route
 app.post("/pokemon/", (req, res) => {
-  req.body.name =
-    req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
+  req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
   Pokemon.create(req.body, (error, pokemon) => {
     res.redirect("/pokemon");
   });
@@ -81,8 +79,7 @@ app.get("/pokemon/:id/edit", (req, res) => {
 
 // Update route
 app.put("/pokemon/:id", (req, res) => {
-  req.body.name =
-    req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
+  req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
   Pokemon.findByIdAndUpdate(
     req.params.id,
     req.body,
