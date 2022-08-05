@@ -15,14 +15,17 @@ mongoose.connection.once("open", () => {
 // middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static("public"));
 
 app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
 
 // Seed route
-app.get("/pokemon/seed", (req, res) => {
+app.get("/pokemon/seed", async (req, res) => {
+  //Clear database
+  await Pokemon.deleteMany({});
   // Create a list of pokemon into our database
-  Pokemon.create(pokemonData);
+  await Pokemon.create(pokemonData);
   res.redirect("/pokemon");
 });
 

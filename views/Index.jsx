@@ -3,28 +3,57 @@ const React = require("react");
 class Index extends React.Component {
   render() {
     return (
-      <div>
-        <h1>See All The Pokemon!</h1>
-        <nav>
-          <a href="/pokemon/new">Add a New Pokemon</a>
-        </nav>
-        <ul>
-          {this.props.pokemon.map((pokemon, index) => {
-            return (
-              <li>
-                <a href={`/pokemon/${pokemon.id}`}>{pokemon.name}</a>
-                <form
-                  action={`/pokemon/${pokemon.id}?_method=DELETE`}
-                  method="POST"
-                >
-                  <input type="submit" value="DELETE" />
-                </form>
-                <a href={`/pokemon/${pokemon.id}/edit`}>Edit pokemon</a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <html lang="en">
+        <head>
+          <title>Pokemon Index</title>
+          <link rel="stylesheet" href="./css/style.css" />
+          <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+            crossOrigin="anonymous"
+          ></link>
+        </head>
+        <body>
+          <div>
+            <h1>See All The Pokemon!</h1>
+            <nav>
+              <a href="/pokemon/new" class="btn btn-success">
+                Add a New Pokemon
+              </a>
+            </nav>
+            <ul>
+              {this.props.pokemon.map((pokemon, index) => {
+                return (
+                  <li>
+                    <br />
+                    <a href={`/pokemon/${pokemon.id}`} class="btn btn-primary">
+                      {pokemon.name}
+                    </a>
+                    <br />
+                    <a
+                      href={`/pokemon/${pokemon.id}/edit`}
+                      class="btn btn-secondary"
+                    >
+                      Edit pokemon
+                    </a>
+                    <form
+                      action={`/pokemon/${pokemon.id}?_method=DELETE`}
+                      method="POST"
+                    >
+                      <input
+                        type="submit"
+                        class="btn btn-danger"
+                        value="Delete pokemon"
+                      />
+                    </form>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </body>
+      </html>
     );
   }
 }
