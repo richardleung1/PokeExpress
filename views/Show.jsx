@@ -21,7 +21,7 @@ class Show extends React.Component {
             <h2>{pokemon.name}</h2>
             <img src={pokemon.img} alt="" />
             <br />
-            <a href="/pokemon" class="btn btn-info">
+            <a href="/pokemon" className="btn btn-info">
               Pokemon Index
             </a>
           </div>

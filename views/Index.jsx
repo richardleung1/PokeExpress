@@ -18,7 +18,7 @@ class Index extends React.Component {
           <div>
             <h1>See All The Pokemon!</h1>
             <nav>
-              <a href="/pokemon/new" class="btn btn-success">
+              <a href="/pokemon/new" className="btn btn-success">
                 Add a New Pokemon
               </a>
             </nav>
@@ -27,13 +27,13 @@ class Index extends React.Component {
                 return (
                   <li>
                     <br />
-                    <a href={`/pokemon/${pokemon.id}`} class="btn btn-primary">
+                    <a href={`/pokemon/${pokemon.id}`} className="btn btn-primary">
                       {pokemon.name}
                     </a>
                     <br />
                     <a
                       href={`/pokemon/${pokemon.id}/edit`}
-                      class="btn btn-secondary"
+                      className="btn btn-secondary"
                     >
                       Edit pokemon
                     </a>
@@ -43,7 +43,7 @@ class Index extends React.Component {
                     >
                       <input
                         type="submit"
-                        class="btn btn-danger"
+                        className="btn btn-danger"
                         value="Delete pokemon"
                       />
                     </form>

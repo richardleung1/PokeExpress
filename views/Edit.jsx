@@ -27,7 +27,7 @@ class Edit extends React.Component {
                 type="submit"
                 name=""
                 value="Edit Pokemon"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
               />
             </form>
           </div>
